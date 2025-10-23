@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gopikrishnan | Student Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables for easy color changes */
+        :root {
+            --primary-color: #ffd700; /* Vibrant Yellow */
+            --background-dark: #1a1a1a; /* Matte Black */
+            --text-light: #e0e0e0; /* Light grey for text on dark background */
+            --text-dark: #333; /* Dark grey for text on light background (e.g. project cards) */
+            --secondary-bg: #282828; /* Slightly lighter black for distinction */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-code: 'Roboto Mono', monospace; /* For technical/skills lists */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            color: var(--text-light);
+            background-color: var(--background-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--text-light);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h4 {
+            font-family: var(--font-code);
+            color: var(--primary-color);
+        }
+
+        p {
+            color: var(--text-light);
+        }
+
+        /* Specific text color for sections with lighter backgrounds */
+        .project-info p {
+            color: var(--text-dark);
+        }
+
+        /* Highlight text */
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--background-dark);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-link {
+            background-color: var(--primary-color);
+            color: var(--background-dark) !important;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+        .cta-link:hover {
+            background-color: var(--text-light);
+        }
+
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            border: 2px solid var(--primary-color);
+        }
+
+        .primary-btn:hover {
+            background-color: var(--text-light);
+            border-color: var(--text-light);
+            color: var(--background-dark);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--background-dark);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .tagline {
+            font-size: 1.1em;
+            color: var(--text-light);
+            font-family: var(--font-code);
+        }
+
+
+        /* About Section */
+        .about-section {
+            background-color: var(--secondary-bg);
+        }
+
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .bio-text {
+            flex: 2;
+        }
+
+        .photo-box {
+            flex: 1;
+            text-align: right;
+        }
+
+        .photo-box img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background-color: var(--background-dark);
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            flex: 1;
+            border: 1px solid var(--primary-color);
+        }
+
+        .skill-item h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        .skill-item p {
+            font-family: var(--font-code);
+            font-size: 0.95em;
+            color: var(--text-light);
+        }
+
+
+        /* Projects Section */
+        .projects-section {
+            background-color: var(--secondary-bg);
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 50px;
+            color: var(--text-light);
+        }
+
+        .project-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 40%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            width: 60%;
+            padding: 40px;
+        }
+        .project-info h4 {
+            color: var(--background-dark);
+        }
+
+        .project-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .project-card.reverse img {
+            order: 2;
+        }
+
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .contact-section h3 {
+            color: var(--background-dark);
+        }
+
+        .contact-section p {
+            color: var(--background-dark);
+        }
+
+        .social-links a {
+            color: var(--background-dark);
+            margin: 0 15px;
+            text-decoration: underline;
+        }
+        .social-links a:hover {
+            color: #555;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            border-top: 1px solid var(--primary-color);
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .nav-flex {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 10px;
+            }
+
+            .about-flex, .project-card, .project-card.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .photo-box, .bio-text, .project-card img, .project-info {
+                width: 100%;
+                text-align: center;
+            }
+
+            .project-card img {
+                height: 200px;
+                order: -1;
+            }
+            .project-info {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <h1 class="logo">Gopikrishnan</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact" class="cta-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <p class="tagline">First Year MCA Student & Aspiring Data Scientist</p>
+            <h2>I turn complex <span class="highlight">data into actionable insights</span> and build robust digital solutions.</h2>
+            <a href="#projects" class="button primary-btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container about-flex">
+            <div class="bio-text">
+                <h3>About Me</h3>
+                <p>
+                    Currently pursuing my MCA, I am passionate about **self-learning Data Science** and applying algorithmic thinking to real-world problems. My goal is to extract meaningful patterns from data to drive impactful decisions.
+                </p>
+                <p>
+                    **My foundation:** "My five years in Computer Science built the **foundation and the engine** of a high-performance car. Self-learning Data Science is now teaching me how to use the **GPS and the expert driving skills** to navigate complex, unexplored terrains and find the most valuable destination."
+                </p>
+                <p>
+                    I thrive on challenges that blend logical programming with statistical analysis, always driven by **persistence and curiosity**.
+                </p>
+            </div>
+            <div class="photo-box">
+                <img src="student-photo.jpg" alt="Gopikrishnan professional photo">
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h3>Technical Toolkit</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>Programming Languages</h4>
+                    <p>Python (Pandas, Scikit-learn), SQL, C++</p>
+                </div>
+                <div class="skill-item">
+                    <h4>Data Science & ML</h4>
+                    <p>Machine Learning (Supervised/Unsupervised), Data Viz (Matplotlib, Tableau), Statistical Analysis</p>
+                </div>
+                <div class="skill-item">
+                    <h4>Development & Tools</h4>
+                    <p>HTML, CSS, Git/GitHub, Cloud Basics (AWS), VS Code</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h3>Featured Projects</h3>
+            <p class="subtitle">Showcasing my problem-solving process and technical application.</p>
+            
+            <div class="project-card">
+                <img src="project-data.jpg" alt="Data Science Project Thumbnail">
+                <div class="project-info">
+                    <h4>Predictive Model for Customer Churn</h4>
+                    <p>Developed a machine learning model using Python's **Scikit-learn** to predict customer churn with **88% accuracy**, providing actionable insights for retention strategies.</p>
+                    <a href="link-to-github-repo" target="_blank" class="button secondary-btn">View Code on GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reverse">
+                <img src="project-web.jpg" alt="Web Development Project Thumbnail">
+                <div class="project-info">
+                    <h4>Interactive University Course Scheduler</h4>
+                    <p>Built a responsive web application (HTML, CSS, JavaScript) to help students manage course schedules and prerequisites, enhancing academic planning.</p>
+                    <a href="link-to-live-site" target="_blank" class="button secondary-btn">View Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h3>Let's Collaborate!</h3>
+            <p>I am actively seeking internships and entry-level Data Science / Analyst roles. Reach out and let's discuss how my skills can benefit your team.</p>
+            <a href="mailto:your.email@example.com" class="button primary-btn">Email Me</a>
+            <p class="social-links">
+                <a href="link-to-linkedin" target="_blank">LinkedIn</a> | 
+                <a href="link-to-github" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2025 Gopikrishnan. Driven by data.
+        </div>
+    </footer>
+
+</body>
+</html>
